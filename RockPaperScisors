@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tytuł Twojej Strony</title>
+</head>
+<body>
+    
+    <header>
+    
+    </header>
+    
+    <main>
+       <input type="button" value="Kamień" class="wybor wybor-k" onclick="gra(1)">
+       <input type="button" value="Papier" class="wybor wybor-p" onclick="gra(2)">
+       <input type="button" value="Nożyczki" class="wybor wybor-n" onclick="gra(3)">
+       <p class="ruch"></p>
+       <p class="wynik"></p>
+       <p class="wynikG">Gracz: </p>
+       <p class="wynikK">Komputer: </p>
+    </main>
+    <script>
+    const opcje = ["K", "P", "N"];
+    let wynikGracz = 0;
+    let wynikKomputer = 0;
+    function gra(wybor) {
+        komputer = opcje[Math.floor(Math.random() * opcje.length)];
+        const wynik = document.querySelector(".wynik");
+        const ruch = document.querySelector(".ruch");
+        if (wybor === 1) 
+        {
+            if (komputer === "N")
+            {
+               ruch.textContent="Komputer: Nożyce"
+               wynik.textContent="Wygrałeś";
+               wynikGracz += 1;
+            }
+            else if (komputer === "P")
+            {
+                ruch.textContent="Komputer: Papier";
+                wynik.textContent="Przegrałeś";
+                wynikKomputer += 1;
+            }
+            else
+            {
+                ruch.textContent="Komputer: Kamień";
+                wynik.textContent="Remis";
+                wynikGracz += 1;
+                wynikKomputer += 1;
+            }
+         }
+         else if (wybor === 2)
+         {
+            if (komputer === "N")
+            {
+               ruch.textContent="Komputer: Nożyce";
+               wynik.textContent="Przegrałeś";
+               wynikKomputer += 1;
+            }
+            else if (komputer === "P")
+            {
+                ruch.textContent="Komputer: Papier";
+                wynik.textContent="Remis";
+                wynikGracz += 1;
+                wynikKomputer += 1;
+            }
+            else
+            {
+                ruch.textContent="Komputer: Kamień";
+                wynik.textContent="Wygrałeś";
+                wynikGracz += 1;
+            }
+         }
+         else 
+         {
+            if (komputer === "N")
+            {
+               ruch.textContent="Komputer: Nożyce";
+               wynik.textContent="Remis";
+               wynikGracz += 1;
+               wynikKomputer += 1;
+            }
+            else if (komputer === "P")
+            {
+                ruch.textContent="Komputer: Papier";
+                wynik.textContent="Wygrałeś";
+                wynikGracz += 1;
+            }
+            else
+            {
+                ruch.textContent="Komputer: Kamień"
+                wynik.textContent="Przegrałeś";
+                wynikKomputer += 1;
+            }
+         }
+         document.querySelector(".wynikG").textContent ="Gracz: " + wynikGracz;
+         document.querySelector(".wynikK").textContent = "Komputer: " + wynikKomputer;
+    }
+    /*
+    //2 sposób:
+       const opcje = ["K", "P", "N"];
+       let wynikGracz = 0;
+       let wynikKomputer = 0;
+
+       function gra(wybor) {
+          const komputer = opcje[Math.floor(Math.random() * opcje.length)];
+          const wynik = document.querySelector(".wynik");
+          const ruch = document.querySelector(".ruch");
+
+         const resultMapping = {
+            "1N": ["Wygrałeś", 1, 0],
+            "1P": ["Przegrałeś", 0, 1],
+            "1K": ["Remis", 1, 1],
+            "2N": ["Przegrałeś", 0, 1],
+            "2P": ["Remis", 1, 1],
+            "2K": ["Wygrałeś", 1, 0],
+            "3N": ["Remis", 1, 1],
+            "3P": ["Wygrałeś", 1, 0],
+            "3K": ["Przegrałeś", 0, 1],
+          };
+
+         const key = wybor + komputer;
+         const [resultText, graczScore, komputerScore] = resultMapping[key];
+
+         ruch.textContent = "Komputer: " + (komputer === "K" ? "Kamień" : komputer === "P" ? "Papier" : "Nożyce");
+         wynik.textContent = resultText;
+
+         wynikGracz += graczScore;
+         wynikKomputer += komputerScore;
+
+         document.querySelector(".wynikG").textContent = "Gracz: " + wynikGracz;
+         document.querySelector(".wynikK").textContent = "Komputer: " + wynikKomputer;
+    }
+
+    */
+    </script>
+    <footer>
+        
+    </footer>
+</body>
+</html>
